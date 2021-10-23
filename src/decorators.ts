@@ -1,8 +1,9 @@
 import { isMasterInstance } from './core';
 import { Pm2MasterProcessConfig } from './types';
+import { Config } from './config';
 
 export const MasterInstance =
-  (config?: Pm2MasterProcessConfig) =>
+  (config: Partial<Pm2MasterProcessConfig> = Config) =>
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     (target: Object, propertyKey: string, descriptor: PropertyDescriptor) => {
       const method = descriptor.value;
@@ -17,7 +18,7 @@ export const MasterInstance =
     };
 
 export const NotMasterInstance =
-  (config?: Pm2MasterProcessConfig) =>
+  (config: Partial<Pm2MasterProcessConfig> = Config) =>
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     (target: Object, propertyKey: string, descriptor: PropertyDescriptor) => {
       const method = descriptor.value;

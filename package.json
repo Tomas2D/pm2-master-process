@@ -29,13 +29,13 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.4",
-    "pm2": "^5.1.2",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "husky": "^7.0.1",
     "lint-staged": "^10.5.4",
+    "pm2": "^5.1.2",
     "prettier": "^2.2.1",
     "typescript": "^4.2.3"
   },
