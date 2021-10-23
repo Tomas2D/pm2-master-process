@@ -1,0 +1,52 @@
+{
+  "name": "pm2-master-process",
+  "description": "Run specific functions only on your PM2 master process and simply race condition.",
+  "keywords": [
+    "pm2",
+    "pm2 master process"
+  ],
+  "version": "1.0.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "repository": "git@github.com:Tomas2D/pm2-master-process.git",
+  "author": "Tomáš Dvořák <toomas2d@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "rm -Rf lib; tsc -p tsconfig.build.json",
+    "lint": "eslint \"{src,test}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "changelog": "npx gitmoji-changelog",
+    "release": "yarn version",
+    "version": "yarn changelog && code --wait CHANGELOG.md && git add README.md CHANGELOG.md",
+    "prepublishOnly": "yarn build"
+  },
+  "peerDependencies": {
+    "pm2": ">=4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.4",
+    "pm2": "^5.1.2",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint \"{src,test}/**/*.ts\" --fix"
+    ]
+  }
+}
