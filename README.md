@@ -3,6 +3,7 @@
 When using [PM2](https://github.com/Unitech/pm2) (Process Manager) for managing your Node.js applications,
 you will probably later need to run specific tasks only on a single instance (process). This small library solves
 this problem and gives you simple API and method decorators that you can use.
+Does this library help you? Do not forget to give it a ⭐️!
 
 ## ⭐️ Features
 
@@ -12,11 +13,13 @@ this problem and gives you simple API and method decorators that you can use.
 
 ## 🚀 Installation
 
+First you need to install this package and related `pm2` package.
+
 ```
-yarn add pm2-master-process
+yarn add pm2-master-process pm2
 ```
 ```
-npm install pm2-master-process
+npm install pm2-master-process pm2
 ```
 
 
