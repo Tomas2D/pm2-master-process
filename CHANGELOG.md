@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="1.0.2"></a>
+## 1.0.2 (2021-11-08)
+
+### Fixed
+
+- 🐛 Handle instances running in a fork mode [[3da0d61](https://github.com/Tomas2D/pm2-master-process/commit/3da0d61015fe47e356ed06fa33ef3c342da38141)]
+
+
 <a name="1.0.1"></a>
 ## 1.0.1 (2021-11-08)
 
