@@ -68,7 +68,7 @@ export async function isMasterInstance(customConfig: Partial<Pm2MasterProcessCon
   const curId: number | null = getCurrentInstanceId(config);
   const instancesIds: number[] = await getInstanceIds(config);
 
-  if (curId === null || instancesIds.length === 0) {
+  if (curId === null && instancesIds.length === 0) {
     config.logger.error('Not running in PM2.');
     return true;
   }
