@@ -45,6 +45,12 @@ export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfi
   });
 
   const processes: ProcessDescription[] = await promisify(pm2.list).bind(pm2)();
+
+  // Running in fork mode
+  if (processes.length === 0) {
+    return [curInstanceId];
+  }
+
   const curProcess: ProcessDescription | undefined = processes.find(
     (process) => getProcessInstanceId(process, config) === curInstanceId,
   );
@@ -69,13 +75,7 @@ export async function isMasterInstance(customConfig: Partial<Pm2MasterProcessCon
   const instancesIds: number[] = await getInstanceIds(config);
 
   // Not PM2
-  if (curId === null && instancesIds.length === 0) {
-    config.logger.error('Not running in PM2.');
-    return true;
-  }
-
-  // Fork mode
-  if (curId !== null && instancesIds.length === 0) {
+  if (curId === null || instancesIds.length === 0) {
     return true;
   }
 
