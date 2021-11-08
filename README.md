@@ -61,20 +61,20 @@ import { MasterInstance, NotMasterInstance } from 'pm2-master-process';
 
 class MyController {
 
-  @MasterInstance()
   @Cron('0 0 0 * * *', {
     name: 'Validate FS',
   })
+  @MasterInstance()
   runJob() {
-  ...
+    ...
   }
 
-  @NotMasterInstance()
   @Cron('0 0 0 * * *', {
     name: 'Something else',
   })
+  @NotMasterInstance()
   runDifferntJob() {
-  ...
+    ...
   }
 
 }
