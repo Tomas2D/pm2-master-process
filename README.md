@@ -9,7 +9,8 @@ Does this library help you? Do not forget to give it a ⭐️!
 
 - Allow running specific tasks only on a single instance
 - Supports PM2 restarts and scaling
-- Decorators for easy use!
+- Decorators for easy use
+- Retrieves number of slaves 
 
 ## 🚀 Installation
 
@@ -26,7 +27,9 @@ npm install pm2-master-process pm2
 Without any configuration, the environment variable which tells us the instance of the id is `NODE_APP_INSTANCE` ([source](https://pm2.keymetrics.io/docs/usage/environment/)).
 If you have a problem accessing this environment variable, edit your pm2 ecosystem file and change the value of field `instance_var` to `YOUR_CUSTOM_ENV_NAME`.
 
-**Usage without configuration**
+## 🤘🏻 Usage
+
+**Without custom configuration**
 
 ```typescript
 import { isMasterInstance } from 'pm2-master-process'
@@ -38,7 +41,7 @@ if (await isMasterInstance()) {
 }
 ```
 
-**Usage with configuration**
+**With custom configuration**
 ```typescript
 import { isMasterInstance, Pm2MasterProcessConfig } from 'pm2-master-process'
 
@@ -78,6 +81,16 @@ class MyController {
   }
 
 }
+```
+
+### ✨ Feature functions
+
+**Retrieve number of slaves**
+
+```typescript
+import { getSlavesCount  } from 'pm2-master-process';
+
+const slavesCount = await getSlavesCount()
 ```
 
 ## TODO

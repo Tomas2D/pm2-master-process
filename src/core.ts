@@ -82,3 +82,10 @@ export async function isMasterInstance(customConfig: Partial<Pm2MasterProcessCon
   // Cluster mode
   return Math.min(...instancesIds) === curId;
 }
+
+export async function getSlavesCount(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number> {
+  const config: Pm2MasterProcessConfig = fixConfig(customConfig);
+  
+  const instances = await getInstanceIds(config);
+  return Math.max(0, instances.length - 1)
+}
