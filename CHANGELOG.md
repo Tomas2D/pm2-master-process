@@ -1,5 +1,17 @@
 # Changelog
 
+<a name="1.1.0"></a>
+## 1.1.0 (2021-12-16)
+
+### Added
+
+- ✨ Retrieve slaves count [[24198ff](https://github.com/Tomas2D/pm2-master-process/commit/24198ff08fe6d95742864606bb487af03aab4c1b)]
+
+### Miscellaneous
+
+- 📝 Update usage in NestJS framework [[7625e1c](https://github.com/Tomas2D/pm2-master-process/commit/7625e1c599bbfb2bc7fe553e5aad5202ba5b998f)]
+
+
 <a name="1.0.3"></a>
 ## 1.0.3 (2021-11-08)
 
