@@ -40,14 +40,12 @@ export async function getInstances(customConfig: Partial<Pm2MasterProcessConfig>
 
   const processes: ProcessDescription[] = await promisify(pm2.list).bind(pm2)();
 
-  await pm2.disconnect();
-
   // Running in a fork mode
   if (processes.length === 0) {
     return [];
   }
 
-  const curInstanceId = getCurrentInstanceId();
+  const curInstanceId = getCurrentInstanceId(config);
   const curProcess: ProcessDescription | undefined = processes.find(
     (process) => getProcessInstanceId(process, config) === curInstanceId,
   );
