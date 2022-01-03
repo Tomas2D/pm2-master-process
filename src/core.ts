@@ -24,14 +24,8 @@ export function getCurrentInstanceId(config: Pick<Pm2MasterProcessConfig, 'insta
   return isNaN(instanceId) ? null : instanceId;
 }
 
-export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number[]> {
+export async function getInstances(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<ProcessDescription[]> {
   const config: Pm2MasterProcessConfig = fixConfig(customConfig);
-
-  const curInstanceId = getCurrentInstanceId(config);
-  if (curInstanceId === null) {
-    config.logger.error('Not running in PM2.');
-    return [];
-  }
 
   // Connection to PM2 daemon is global
   await new Promise((resolve, reject) => {
@@ -46,11 +40,14 @@ export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfi
 
   const processes: ProcessDescription[] = await promisify(pm2.list).bind(pm2)();
 
-  // Running in fork mode
+  await pm2.disconnect();
+
+  // Running in a fork mode
   if (processes.length === 0) {
-    return [curInstanceId];
+    return [];
   }
 
+  const curInstanceId = getCurrentInstanceId();
   const curProcess: ProcessDescription | undefined = processes.find(
     (process) => getProcessInstanceId(process, config) === curInstanceId,
   );
@@ -59,13 +56,27 @@ export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfi
     throw new Error(`Invalid instance name in pm2!`);
   }
 
-  const processIds = processes
-    .filter((process) => process.name === curProcess.name)
+  return processes.filter((process) => process.name === curProcess.name)
+}
+
+export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number[]> {
+  const config: Pm2MasterProcessConfig = fixConfig(customConfig);
+
+  const curInstanceId = getCurrentInstanceId(config);
+  if (curInstanceId === null) {
+    config.logger.error('Not running in PM2.');
+    return [];
+  }
+
+  const instances = await getInstances(config)
+
+  if (instances.length === 0) {
+    return [curInstanceId]
+  }
+
+  return instances
     .map((process) => getProcessInstanceId(process, config))
     .filter((id): id is number => id !== null);
-
-  await pm2.disconnect();
-  return processIds;
 }
 
 export async function isMasterInstance(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<boolean> {
@@ -85,7 +96,7 @@ export async function isMasterInstance(customConfig: Partial<Pm2MasterProcessCon
 
 export async function getSlavesCount(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number> {
   const config: Pm2MasterProcessConfig = fixConfig(customConfig);
-  
+
   const instances = await getInstanceIds(config);
   return Math.max(0, instances.length - 1)
 }

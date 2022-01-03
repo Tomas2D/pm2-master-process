@@ -93,6 +93,14 @@ import { getSlavesCount  } from 'pm2-master-process';
 const slavesCount = await getSlavesCount()
 ```
 
+**Retrieve processes and not just instances**
+
+```typescript
+import { getInstances } from 'pm2-master-process';
+
+const instances = await getInstances()
+```
+
 ## TODO
 
 - [ ] Add tests
