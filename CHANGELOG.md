@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="1.2.1"></a>
+## 1.2.1 (2022-01-03)
+
+### Fixed
+
+- 🐛 PM2 disconnect brakes later usage [[3e08acc](https://github.com/Tomas2D/pm2-master-process/commit/3e08acc282daaf480aea02192241f0085e0030ce)]
+
+
 <a name="1.2.0"></a>
 ## 1.2.0 (2022-01-03)
 
