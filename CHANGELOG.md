@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="1.2.0"></a>
+## 1.2.0 (2022-01-03)
+
+### Added
+
+- ✨ Add getInstances function [[c08c5d5](https://github.com/Tomas2D/pm2-master-process/commit/c08c5d5ceccd555526c37b267d4289ee9e959b06)]
+
+
 <a name="1.1.0"></a>
 ## 1.1.0 (2021-12-16)
 
