@@ -103,4 +103,5 @@ const instances = await getInstances()
 
 ## TODO
 
-- [ ] Add tests
+- [ ] Add tests,
+- [ ] Add a support for connection with queue-based libraries.
