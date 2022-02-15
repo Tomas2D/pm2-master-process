@@ -1,5 +1,17 @@
 # Changelog
 
+<a name="1.2.3"></a>
+## 1.2.3 (2022-02-15)
+
+### Miscellaneous
+
+-  Merge pull request [#2](https://github.com/Tomas2D/pm2-master-process/issues/2) from Tomas2D/dependabot/npm_and_yarn/follow-redirects-1.14.8 [[b00dd4f](https://github.com/Tomas2D/pm2-master-process/commit/b00dd4fdbf4d48a0e88f888ee5336a4635483194)]
+-  Merge pull request [#3](https://github.com/Tomas2D/pm2-master-process/issues/3) from Tomas2D/dependabot/npm_and_yarn/vm2-3.9.7 [[e0f9a03](https://github.com/Tomas2D/pm2-master-process/commit/e0f9a037167d16da5d96006d66b80dfbb535ffb5)]
+-  Bump vm2 from 3.9.5 to 3.9.7 [[20af3c4](https://github.com/Tomas2D/pm2-master-process/commit/20af3c4d352e40805b875fa28a1afadb740b9b60)]
+-  Bump follow-redirects from 1.14.7 to 1.14.8 [[534c741](https://github.com/Tomas2D/pm2-master-process/commit/534c741302a58848abc5ecedcc84016b82d6f979)]
+-  Update README.md [[af0049e](https://github.com/Tomas2D/pm2-master-process/commit/af0049e7b972b8c226455a0f129c0715cb829a6c)]
+
+
 <a name="1.2.2"></a>
 ## 1.2.2 (2022-01-15)
 
