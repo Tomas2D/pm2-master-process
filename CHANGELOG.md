@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="1.2.4"></a>
+## 1.2.4 (2022-03-19)
+
+### Changed
+
+- ⬆️ Upgrade dependencies [[d0f4f5f](https://github.com/Tomas2D/pm2-master-process/commit/d0f4f5f451f14d29bd5db2785c4665ecd210b7af)]
+
+
 <a name="1.2.3"></a>
 ## 1.2.3 (2022-02-15)
 
