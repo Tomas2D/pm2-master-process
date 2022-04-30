@@ -1,5 +1,14 @@
 # Changelog
 
+<a name="1.2.5"></a>
+## 1.2.5 (2022-04-29)
+
+### Miscellaneous
+
+-  Merge pull request [#4](https://github.com/Tomas2D/pm2-master-process/issues/4) from Tomas2D/dependabot/npm_and_yarn/async-2.6.4 [[0a7b74b](https://github.com/Tomas2D/pm2-master-process/commit/0a7b74bd0c5cd7fd1bab68718f40a447128ba9c7)]
+-  Bump async from 2.6.3 to 2.6.4 [[332c43c](https://github.com/Tomas2D/pm2-master-process/commit/332c43c5b0f1c1b31fc6396755868391cce61a63)]
+
+
 <a name="1.2.4"></a>
 ## 1.2.4 (2022-03-19)
 
