@@ -11,7 +11,14 @@
   "files": [
     "lib"
   ],
-  "repository": "git@github.com:Tomas2D/pm2-master-process.git",
+  "homepage": "https://github.com/Tomas2D/pm2-master-process#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomas2D/pm2-master-process.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tomas2D/pm2-master-process/issues"
+  },
   "author": "Tomáš Dvořák <toomas2d@gmail.com>",
   "license": "MIT",
   "private": false,
