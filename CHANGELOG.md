@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="1.2.6"></a>
+## 1.2.6 (2022-07-04)
+
+### Changed
+
+- 🔧 Update repository info in package.json [[80307dc](https://github.com/Tomas2D/pm2-master-process/commit/80307dcb26b25ca2834a9f46e3eeb7ff788cf355)]
+
+
 <a name="1.2.5"></a>
 ## 1.2.5 (2022-04-29)
 
