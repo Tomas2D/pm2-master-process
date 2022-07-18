@@ -1,7 +1,7 @@
-export const Config = Object.freeze({
+export const Config = {
   instanceIdPath: `NODE_APP_INSTANCE`,
   logger: {
     log: console.log,
     error: console.error,
   },
-});
+};
