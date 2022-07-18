@@ -1,5 +1,27 @@
 # Changelog
 
+<a name="1.2.7"></a>
+## 1.2.7 (2022-07-18)
+
+### Changed
+
+- ♻️ Remove Object.freeze from Config [[9ac0ef0](https://github.com/Tomas2D/pm2-master-process/commit/9ac0ef0165660172913bd6999e2edaba0dde8aca)]
+- 🔧 Setup Dependabot auto updates [[7bc19be](https://github.com/Tomas2D/pm2-master-process/commit/7bc19be8d122a48bd2256dec3f39f3be1f99e79f)]
+
+### Removed
+
+- 🔥 Remove comments from tsconfig [[7280e94](https://github.com/Tomas2D/pm2-master-process/commit/7280e942c53015291134890da6f57bd8111fe350)]
+
+### Fixed
+
+- 🐛 Identification of process in shared PM2 environment [[e689c9c](https://github.com/Tomas2D/pm2-master-process/commit/e689c9c7ba7436077dd77a9374982d86a0fc5e47)]
+
+### Miscellaneous
+
+-  Merge pull request [#6](https://github.com/Tomas2D/pm2-master-process/issues/6) from Tomas2D/dependabot/npm_and_yarn/typescript-4.7.4 [[bc4a77b](https://github.com/Tomas2D/pm2-master-process/commit/bc4a77b752e6a92d373949c19d9f80f35bd2fadc)]
+-  Bump typescript from 4.6.2 to 4.7.4 [[5bc5fbb](https://github.com/Tomas2D/pm2-master-process/commit/5bc5fbb5020d0c9436ff06f46365bc6f43a857e6)]
+
+
 <a name="1.2.6"></a>
 ## 1.2.6 (2022-07-04)
 
