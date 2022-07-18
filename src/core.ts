@@ -4,6 +4,38 @@ import { Config } from './config';
 import { Pm2MasterProcessConfig } from './types';
 import { fixConfig } from './utils';
 
+const initConnection = (function() {
+  let resolve: Function, reject: Function, called = false, promise: Promise<void>;
+  const setupPromise = () => {
+    promise = new Promise<void>((_resolve, _reject) => {
+      resolve = _resolve
+      reject = _reject
+    })
+
+    promise.catch(() => { /* Prevent throwing when not used */ })
+  }
+  setupPromise()
+
+  return (): Promise<void> => {
+    if (called) {
+      return promise
+    }
+    called = true
+
+    pm2.connect(true, (err: unknown) => {
+      if (err) {
+        reject(err);
+        called = false
+        setupPromise()
+      } else {
+        resolve(undefined);
+      }
+    });
+
+    return promise
+  }
+})()
+
 function getProcessInstanceId(
   process: ProcessDescription,
   config: Pick<Pm2MasterProcessConfig, 'instanceIdPath'> = Config,
@@ -35,15 +67,7 @@ export function getCurrentProcessId(): number | null {
 
 export async function getInstances(): Promise<ProcessDescription[]> {
   // Connection to PM2 daemon is global
-  await new Promise((resolve, reject) => {
-    pm2.connect(true, (err: unknown) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(undefined);
-      }
-    });
-  });
+  await initConnection()
 
   const processes: ProcessDescription[] = await promisify(pm2.list).bind(pm2)();
 
@@ -61,7 +85,9 @@ export async function getInstances(): Promise<ProcessDescription[]> {
     throw new Error(`Invalid instance name in pm2!`);
   }
 
-  return processes.filter((process) => process.name === curProcess.name)
+  return processes
+    .filter((process) => process.name === curProcess.name)
+    .filter((process) => process.pm2_env?.status === 'online')
 }
 
 export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number[]> {
