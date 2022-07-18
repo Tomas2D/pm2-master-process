@@ -1,5 +1,14 @@
 # Changelog
 
+<a name="1.3.0"></a>
+## 1.3.0 (2022-07-18)
+
+### Changed
+
+- ♻️ By default, use only &quot;online&quot; nodes in cluster [[e7d07c4](https://github.com/Tomas2D/pm2-master-process/commit/e7d07c43a26075b3dd92ae4634a723a759a0a861)]
+- ⚡ Reuse PM2 connection [[f91417f](https://github.com/Tomas2D/pm2-master-process/commit/f91417f54b93af26fd884962f770bfb3fe12eab9)]
+
+
 <a name="1.2.7"></a>
 ## 1.2.7 (2022-07-18)
 
