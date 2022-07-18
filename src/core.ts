@@ -65,7 +65,7 @@ export function getCurrentProcessId(): number | null {
   })
 }
 
-export async function getInstances(): Promise<ProcessDescription[]> {
+export async function getInstances({ instanceStatus = [] }: Pick<Pm2MasterProcessConfig, 'instanceStatus'> = Config): Promise<ProcessDescription[]> {
   // Connection to PM2 daemon is global
   await initConnection()
 
@@ -76,9 +76,9 @@ export async function getInstances(): Promise<ProcessDescription[]> {
     return [];
   }
 
-  const curInstanceId = getCurrentProcessId();
+  const curProcessId = getCurrentProcessId();
   const curProcess: ProcessDescription | undefined = processes.find(
-    (process) => getProcessId(process) === curInstanceId,
+    (process) => getProcessId(process) === curProcessId,
   );
 
   if (!curProcess?.name) {
@@ -87,7 +87,7 @@ export async function getInstances(): Promise<ProcessDescription[]> {
 
   return processes
     .filter((process) => process.name === curProcess.name)
-    .filter((process) => process.pm2_env?.status === 'online')
+    .filter((process) => instanceStatus.length === 0 || instanceStatus.includes(process.pm2_env?.status!))
 }
 
 export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number[]> {
@@ -99,7 +99,7 @@ export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfi
     return [];
   }
 
-  const instances = await getInstances()
+  const instances = await getInstances(config)
 
   if (instances.length === 0) {
     return [curInstanceId]

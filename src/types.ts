@@ -1,7 +1,18 @@
-import { Config } from './config';
+import { ProcessDescription } from 'pm2';
+
+export type ProcessStatus = Exclude<Required<ProcessDescription>['pm2_env']['status'], undefined>
+
+export type ConfigType = {
+  instanceIdPath: string,
+  instanceStatus: ProcessStatus[],
+  logger: {
+    log: (msg: any) => void,
+    error: (msg: any) => void,
+  },
+};
 
 export type AnyFn = (...data: unknown[]) => unknown;
 
-export type Pm2MasterProcessConfig = typeof Config & {
-  logger: false | Record<keyof typeof Config['logger'], AnyFn>;
+export type Pm2MasterProcessConfig = ConfigType & {
+  logger: false | Record<keyof ConfigType['logger'], AnyFn>;
 };

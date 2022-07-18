@@ -47,6 +47,7 @@ import { isMasterInstance, Pm2MasterProcessConfig } from 'pm2-master-process'
 
 const config: Partial<Pm2MasterProcessConfig> = {
   instanceIdPath: `YOUR_CUSTOM_ENV_NAME`, // process.env.YOUR_CUSTOM_ENV_NAME
+  instanceIdStatus: ['online', 'launching'], // 'online' | 'stopping' | 'stopped' | 'launching' | 'errored' | 'one-launch-status', default is ['online'] 
   logger: false,
 }
 
