@@ -8,25 +8,32 @@ function getProcessInstanceId(
   process: ProcessDescription,
   config: Pick<Pm2MasterProcessConfig, 'instanceIdPath'> = Config,
 ): number | null {
-  const pm2_env = process?.pm2_env;
+  const pm2_env: ProcessDescription['pm2_env'] = process?.pm2_env;
   if (!pm2_env) {
     return null;
   }
-  const instanceId = Number(
-    (pm2_env as ProcessDescription['pm2_env'] & Record<typeof config.instanceIdPath, string>)
-      [config.instanceIdPath]
-  );
-  return isNaN(instanceId) ? null : instanceId;
+  const instanceId = Number(pm2_env[config.instanceIdPath as keyof typeof pm2_env]);
+  return Number.isNaN(instanceId) ? null : instanceId;
+}
+
+function getProcessId(process: ProcessDescription): number | null {
+  return getProcessInstanceId(process, {
+    instanceIdPath: 'pm_id'
+  })
 }
 
 export function getCurrentInstanceId(config: Pick<Pm2MasterProcessConfig, 'instanceIdPath'> = Config): number | null {
   const instanceId = Number(process.env[config.instanceIdPath] as string);
-  return isNaN(instanceId) ? null : instanceId;
+  return Number.isNaN(instanceId) ? null : instanceId;
 }
 
-export async function getInstances(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<ProcessDescription[]> {
-  const config: Pm2MasterProcessConfig = fixConfig(customConfig);
+export function getCurrentProcessId(): number | null {
+  return getCurrentInstanceId({
+    instanceIdPath: 'pm_id'
+  })
+}
 
+export async function getInstances(): Promise<ProcessDescription[]> {
   // Connection to PM2 daemon is global
   await new Promise((resolve, reject) => {
     pm2.connect(true, (err: unknown) => {
@@ -45,9 +52,9 @@ export async function getInstances(customConfig: Partial<Pm2MasterProcessConfig>
     return [];
   }
 
-  const curInstanceId = getCurrentInstanceId(config);
+  const curInstanceId = getCurrentProcessId();
   const curProcess: ProcessDescription | undefined = processes.find(
-    (process) => getProcessInstanceId(process, config) === curInstanceId,
+    (process) => getProcessId(process) === curInstanceId,
   );
 
   if (!curProcess?.name) {
@@ -66,7 +73,7 @@ export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfi
     return [];
   }
 
-  const instances = await getInstances(config)
+  const instances = await getInstances()
 
   if (instances.length === 0) {
     return [curInstanceId]
