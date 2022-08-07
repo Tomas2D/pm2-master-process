@@ -102,7 +102,21 @@ import { getInstances } from 'pm2-master-process';
 const instances = await getInstances()
 ```
 
+### API
+
+```typescript
+declare function getCurrentInstanceId(config?: Pick<Pm2MasterProcessConfig, 'instanceIdPath'>): number | null;
+declare function getInstances({ instanceStatus }?: Pick<Pm2MasterProcessConfig, 'instanceStatus'>): Promise<ProcessDescription[]>;
+declare function getInstanceIds(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<number[]>;
+
+declare function getCurrentProcessId(): number | null;
+
+declare function getMasterInstanceId(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<number | null>;
+declare function isMasterInstance(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<boolean>;
+
+declare function getSlavesCount(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<number>;
+```
+
 ## TODO
 
-- [ ] Add tests,
-- [ ] Add a support for connection with queue-based libraries.
+- [ ] Add tests
