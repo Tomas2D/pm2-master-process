@@ -110,19 +110,28 @@ export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfi
     .filter((id): id is number => id !== null);
 }
 
-export async function isMasterInstance(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<boolean> {
+export async function getMasterInstanceId(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number | null> {
   const config: Pm2MasterProcessConfig = fixConfig(customConfig);
-
-  const curId: number | null = getCurrentInstanceId(config);
   const instancesIds: number[] = await getInstanceIds(config);
 
   // Not PM2
-  if (curId === null || instancesIds.length === 0) {
-    return true;
+  if (instancesIds.length === 0) {
+    return null;
   }
 
   // Cluster mode
-  return Math.min(...instancesIds) === curId;
+  return Math.min(...instancesIds)
+}
+
+export async function isMasterInstance(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<boolean> {
+  const curId: number | null = getCurrentInstanceId();
+
+  if (curId === null) {
+    return true;
+  }
+
+  const masterId = await getMasterInstanceId(customConfig)
+  return curId === masterId;
 }
 
 export async function getSlavesCount(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number> {
