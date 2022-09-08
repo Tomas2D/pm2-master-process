@@ -1,5 +1,43 @@
 # Changelog
 
+<a name="1.3.1"></a>
+## 1.3.1 (2022-09-08)
+
+### Added
+
+- ✨ Add &quot;getMasterInstanceId&quot; function [[f99c173](https://github.com/Tomas2D/pm2-master-process/commit/f99c1736280b8f64b12b5884e5a17f5e0b7bc442)]
+
+### Changed
+
+- ⬆️ Switch to Node 16.16.0 [[43eca51](https://github.com/Tomas2D/pm2-master-process/commit/43eca51e0e684f9f826c86f38c42b60175f57a38)]
+
+### Miscellaneous
+
+-  Merge pull request [#24](https://github.com/Tomas2D/pm2-master-process/issues/24) from Tomas2D/dependabot/npm_and_yarn/types/node-16.11.58 [[c8c4f5e](https://github.com/Tomas2D/pm2-master-process/commit/c8c4f5e397f563d1b8c4e8f29a073c7cd7206db1)]
+-  Bump @types/node from 16.11.56 to 16.11.58 [[ee07f60](https://github.com/Tomas2D/pm2-master-process/commit/ee07f60bc2385abf14c909c820ca21b12b37fce4)]
+-  Merge pull request [#22](https://github.com/Tomas2D/pm2-master-process/issues/22) from Tomas2D/dependabot/npm_and_yarn/typescript-4.8.2 [[5ea3b41](https://github.com/Tomas2D/pm2-master-process/commit/5ea3b410cd7b5784638ee8f463ece5a5112bb7f7)]
+-  Merge pull request [#21](https://github.com/Tomas2D/pm2-master-process/issues/21) from Tomas2D/dependabot/npm_and_yarn/types/node-16.11.56 [[0c8c395](https://github.com/Tomas2D/pm2-master-process/commit/0c8c3955b45ab3ad426836d1158074546f793c0e)]
+-  Bump typescript from 4.7.4 to 4.8.2 [[1818f27](https://github.com/Tomas2D/pm2-master-process/commit/1818f275386e7767fa3239a279ab361b5c5a1e07)]
+-  Bump @types/node from 16.11.55 to 16.11.56 [[8b4100d](https://github.com/Tomas2D/pm2-master-process/commit/8b4100daa0064f95fb248f112c963d22678e7b66)]
+-  Merge pull request [#20](https://github.com/Tomas2D/pm2-master-process/issues/20) from Tomas2D/dependabot/npm_and_yarn/types/node-16.11.55 [[b70de21](https://github.com/Tomas2D/pm2-master-process/commit/b70de21a9edb4732c6d1115030d02773bede4dcc)]
+-  Bump @types/node from 16.11.49 to 16.11.55 [[6effea0](https://github.com/Tomas2D/pm2-master-process/commit/6effea063d680e2d62cdcaf718c68d69dda00d20)]
+-  Merge pull request [#17](https://github.com/Tomas2D/pm2-master-process/issues/17) from Tomas2D/dependabot/npm_and_yarn/types/node-16.11.49 [[17a3a76](https://github.com/Tomas2D/pm2-master-process/commit/17a3a76aa4a3bd3bff4be639829757e9b0c19318)]
+-  Bump @types/node from 16.11.47 to 16.11.49 [[b42fb01](https://github.com/Tomas2D/pm2-master-process/commit/b42fb01db68d2d1decf86bb460db12af4168bef4)]
+-  Merge pull request [#9](https://github.com/Tomas2D/pm2-master-process/issues/9) from Tomas2D/dependabot/npm_and_yarn/lint-staged-13.0.3 [[59a15e9](https://github.com/Tomas2D/pm2-master-process/commit/59a15e96bf6e4b048c0256018394608e09ddc72a)]
+- 📝 Add API section to README [[7c88164](https://github.com/Tomas2D/pm2-master-process/commit/7c88164e82644820e1a98a10e6914b7e9725d9b1)]
+-  Bump lint-staged from 10.5.4 to 13.0.3 [[023bfd4](https://github.com/Tomas2D/pm2-master-process/commit/023bfd4193570ecc88a9fdc4de4271489e0f01db)]
+-  Merge pull request [#5](https://github.com/Tomas2D/pm2-master-process/issues/5) from Tomas2D/dependabot/npm_and_yarn/husky-8.0.1 [[8371c93](https://github.com/Tomas2D/pm2-master-process/commit/8371c93088990e39370f81e8524adae4b5be73b0)]
+-  Merge pull request [#15](https://github.com/Tomas2D/pm2-master-process/issues/15) from Tomas2D/dependabot/npm_and_yarn/types/node-16.11.47 [[7cd0d5b](https://github.com/Tomas2D/pm2-master-process/commit/7cd0d5b36adc6b63373ca0d337686e856f4e1f33)]
+-  Bump @types/node from 16.11.46 to 16.11.47 [[b277707](https://github.com/Tomas2D/pm2-master-process/commit/b2777070b71543682c55b6d152072356349c86ce)]
+-  Merge pull request [#14](https://github.com/Tomas2D/pm2-master-process/issues/14) from Tomas2D/dependabot/npm_and_yarn/types/node-16.11.46 [[12c445c](https://github.com/Tomas2D/pm2-master-process/commit/12c445c88dfa59c976eee9c82e8bdede05e739d4)]
+-  Bump @types/node from 16.11.45 to 16.11.46 [[e4e2ff9](https://github.com/Tomas2D/pm2-master-process/commit/e4e2ff9306fda256c20cee94b9ba117fe89ba8a1)]
+-  Merge pull request [#13](https://github.com/Tomas2D/pm2-master-process/issues/13) from Tomas2D/dependabot/npm_and_yarn/types/node-16.11.45 [[8ff5933](https://github.com/Tomas2D/pm2-master-process/commit/8ff59338b76fdd3dd19d74ba4061acaed2464c14)]
+-  Bump @types/node from 16.11.26 to 16.11.45 [[ca12c68](https://github.com/Tomas2D/pm2-master-process/commit/ca12c6883fe6c66bf97a0a8104aba4c8505ff946)]
+-  Merge pull request [#8](https://github.com/Tomas2D/pm2-master-process/issues/8) from Tomas2D/dependabot/npm_and_yarn/prettier-2.7.1 [[661a3f0](https://github.com/Tomas2D/pm2-master-process/commit/661a3f09410d7fd0be15bdc000495262f7e92de1)]
+-  Bump prettier from 2.6.0 to 2.7.1 [[b66c6fd](https://github.com/Tomas2D/pm2-master-process/commit/b66c6fdc477e320c2ca76e01cba9d10de61adf80)]
+-  Bump husky from 7.0.4 to 8.0.1 [[573a0ea](https://github.com/Tomas2D/pm2-master-process/commit/573a0eaa9811527e55c50b5c85aff43d2f0a4bf9)]
+
+
 <a name="1.3.0"></a>
 ## 1.3.0 (2022-07-18)
 
