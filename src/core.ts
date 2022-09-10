@@ -3,36 +3,28 @@ import { promisify } from 'util';
 import { Config } from './config';
 import { Pm2MasterProcessConfig } from './types';
 import { fixConfig } from './utils';
+import { Task } from 'promise-based-task'
 
 const initConnection = (function() {
-  let resolve: Function, reject: Function, called = false, promise: Promise<void>;
-  const setupPromise = () => {
-    promise = new Promise<void>((_resolve, _reject) => {
-      resolve = _resolve
-      reject = _reject
-    })
-
-    promise.catch(() => { /* Prevent throwing when not used */ })
-  }
-  setupPromise()
+  let task: null | Task<void> = null
 
   return (): Promise<void> => {
-    if (called) {
-      return promise
+    if (task) {
+      return task
     }
-    called = true
+
+    task = new Task<void>()
 
     pm2.connect(true, (err: unknown) => {
       if (err) {
-        reject(err);
-        called = false
-        setupPromise()
+        task?.reject(err);
+        task = new Task<void>()
       } else {
-        resolve(undefined);
+        task?.resolve();
       }
     });
 
-    return promise
+    return task
   }
 })()
 
@@ -95,7 +87,7 @@ export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfi
 
   const curInstanceId = getCurrentInstanceId(config);
   if (curInstanceId === null) {
-    config.logger.error('Not running in PM2.');
+    config.logger.warn('Not running in PM2.');
     return [];
   }
 

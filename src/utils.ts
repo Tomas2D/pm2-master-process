@@ -8,6 +8,7 @@ export function fixConfig(config: Partial<Pm2MasterProcessConfig>): Pm2MasterPro
 
   const logger: Pm2MasterProcessConfig['logger'] = config?.logger === false ? {
     log: () => {},
+    warn: () => {},
     error: () => {},
   } : {
     ...BaseConfig.logger,

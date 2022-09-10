@@ -8,6 +8,7 @@ export type ConfigType = {
   logger: {
     log: (msg: any) => void,
     error: (msg: any) => void,
+    warn: (msg: any) => void,
   },
 };
 

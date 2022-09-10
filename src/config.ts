@@ -6,5 +6,6 @@ export const Config: ConfigType = {
   logger: {
     log: console.log,
     error: console.error,
+    warn: console.warn,
   },
 };
