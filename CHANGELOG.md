@@ -1,5 +1,18 @@
 # Changelog
 
+<a name="1.3.2"></a>
+## 1.3.2 (2022-09-10)
+
+### Changed
+
+- ♻️ Use warn log when not in PM2 [[23eb736](https://github.com/Tomas2D/pm2-master-process/commit/23eb736bad047f76da7d2727c17f2dab33f96302)]
+
+### Miscellaneous
+
+-  Merge pull request [#25](https://github.com/Tomas2D/pm2-master-process/issues/25) from Tomas2D/dependabot/npm_and_yarn/typescript-4.8.3 [[d2cb62c](https://github.com/Tomas2D/pm2-master-process/commit/d2cb62c95f2e3b2cbdfbab560bead77a4d15f22e)]
+-  Bump typescript from 4.8.2 to 4.8.3 [[1af15a8](https://github.com/Tomas2D/pm2-master-process/commit/1af15a8eed753d3d33934bcd6e5bf5ff53f39d2c)]
+
+
 <a name="1.3.1"></a>
 ## 1.3.1 (2022-09-08)
 
