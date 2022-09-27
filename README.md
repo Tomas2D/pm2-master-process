@@ -17,10 +17,10 @@ Does this library help you? Do not forget to give it a ⭐️!
 First you need to install this package and related `pm2` package.
 
 ```
-yarn add pm2-master-process pm2
+yarn add pm2-master-process pm2 promise-based-task
 ```
 ```
-npm install pm2-master-process pm2
+npm install pm2-master-process
 ```
 
 
