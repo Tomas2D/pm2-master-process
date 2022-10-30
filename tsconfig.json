@@ -9,6 +9,8 @@
     ],
     "declaration": true,
     "declarationMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "sourceMap": true,
     "outDir": "lib",
     "strict": true,
