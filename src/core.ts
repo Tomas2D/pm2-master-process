@@ -28,36 +28,17 @@ const initConnection = (function() {
   }
 })()
 
-function getProcessInstanceId(
-  process: ProcessDescription,
-  config: Pick<Pm2MasterProcessConfig, 'instanceIdPath'> = Config,
-): number | null {
-  const pm2_env: ProcessDescription['pm2_env'] = process?.pm2_env;
-  if (!pm2_env) {
-    return null;
-  }
-  const instanceId = Number(pm2_env[config.instanceIdPath as keyof typeof pm2_env]);
-  return Number.isNaN(instanceId) ? null : instanceId;
-}
-
 function getProcessId(process: ProcessDescription): number | null {
-  return getProcessInstanceId(process, {
-    instanceIdPath: 'pm_id'
-  })
-}
-
-export function getCurrentInstanceId(config: Pick<Pm2MasterProcessConfig, 'instanceIdPath'> = Config): number | null {
-  const instanceId = Number(process.env[config.instanceIdPath] as string);
-  return Number.isNaN(instanceId) ? null : instanceId;
+  const processId = Number(process.pm_id ?? (process.pm2_env as any)?.pm_id);
+  return Number.isNaN(processId) ? null : processId;
 }
 
 export function getCurrentProcessId(): number | null {
-  return getCurrentInstanceId({
-    instanceIdPath: 'pm_id'
-  })
+  const processId = Number(process.env.pm_id);
+  return Number.isNaN(processId) ? null : processId;
 }
 
-export async function getInstances({ instanceStatus = [] }: Pick<Pm2MasterProcessConfig, 'instanceStatus'> = Config): Promise<ProcessDescription[]> {
+export async function getProcesses({ instanceStatus = [] }: Pick<Pm2MasterProcessConfig, 'instanceStatus'> = Config): Promise<ProcessDescription[]> {
   // Connection to PM2 daemon is global
   await initConnection()
 
@@ -82,53 +63,53 @@ export async function getInstances({ instanceStatus = [] }: Pick<Pm2MasterProces
     .filter((process) => instanceStatus.length === 0 || instanceStatus.includes(process.pm2_env?.status!))
 }
 
-export async function getInstanceIds(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number[]> {
+export async function getProcessesIds(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number[]> {
   const config: Pm2MasterProcessConfig = fixConfig(customConfig);
 
-  const curInstanceId = getCurrentInstanceId(config);
-  if (curInstanceId === null) {
+  const curProcessId = getCurrentProcessId();
+  if (curProcessId === null) {
     config.logger.warn('Not running in PM2.');
     return [];
   }
 
-  const instances = await getInstances(config)
+  const processes = await getProcesses(config)
 
-  if (instances.length === 0) {
-    return [curInstanceId]
+  if (processes.length === 0) {
+    return [curProcessId]
   }
 
-  return instances
-    .map((process) => getProcessInstanceId(process, config))
+  return processes
+    .map(getProcessId)
     .filter((id): id is number => id !== null);
 }
 
-export async function getMasterInstanceId(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number | null> {
+export async function getMasterProcessId(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number | null> {
   const config: Pm2MasterProcessConfig = fixConfig(customConfig);
-  const instancesIds: number[] = await getInstanceIds(config);
+  const processesIds: number[] = await getProcessesIds(config);
 
   // Not PM2
-  if (instancesIds.length === 0) {
+  if (processesIds.length === 0) {
     return null;
   }
 
   // Cluster mode
-  return Math.min(...instancesIds)
+  return Math.min(...processesIds)
 }
 
-export async function isMasterInstance(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<boolean> {
-  const curId: number | null = getCurrentInstanceId();
+export async function isMasterProcess(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<boolean> {
+  const curId: number | null = getCurrentProcessId();
 
   if (curId === null) {
     return true;
   }
 
-  const masterId = await getMasterInstanceId(customConfig)
+  const masterId = await getMasterProcessId(customConfig)
   return curId === masterId;
 }
 
 export async function getSlavesCount(customConfig: Partial<Pm2MasterProcessConfig> = Config): Promise<number> {
   const config: Pm2MasterProcessConfig = fixConfig(customConfig);
 
-  const instances = await getInstanceIds(config);
-  return Math.max(0, instances.length - 1)
+  const processes = await getProcessesIds(config);
+  return Math.max(0, processes.length - 1)
 }

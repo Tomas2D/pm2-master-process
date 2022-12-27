@@ -3,7 +3,6 @@ import { ProcessDescription } from 'pm2';
 export type ProcessStatus = Exclude<Required<ProcessDescription>['pm2_env']['status'], undefined>
 
 export type ConfigType = {
-  instanceIdPath: string,
   instanceStatus: ProcessStatus[],
   logger: {
     log: (msg: any) => void,

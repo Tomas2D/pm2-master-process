@@ -1,4 +1,4 @@
-import { isMasterInstance } from './core';
+import { isMasterProcess } from './core';
 import { Pm2MasterProcessConfig } from './types';
 import { Config } from './config';
 
@@ -9,7 +9,7 @@ export const MasterInstance =
       const method = descriptor.value;
 
       descriptor.value = async function (...args: unknown[]) {
-        if (!(await isMasterInstance(config))) {
+        if (!(await isMasterProcess(config))) {
           return;
         }
 
@@ -24,7 +24,7 @@ export const NotMasterInstance =
       const method = descriptor.value;
 
       descriptor.value = async function (...args: unknown[]) {
-        if ((await isMasterInstance(config))) {
+        if ((await isMasterProcess(config))) {
           return;
         }
 
