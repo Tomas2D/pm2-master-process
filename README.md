@@ -17,15 +17,14 @@ Does this library help you? Do not forget to give it a ⭐️!
 First you need to install this package and related `pm2` package.
 
 ```
-yarn add pm2-master-process pm2 promise-based-task
+yarn add pm2-master-process promise-based-task pm2
 ```
 ```
 npm install pm2-master-process
 ```
 
 
-Without any configuration, the environment variable which tells us the instance of the id is `NODE_APP_INSTANCE` ([source](https://pm2.keymetrics.io/docs/usage/environment/)).
-If you have a problem accessing this environment variable, edit your pm2 ecosystem file and change the value of field `instance_var` to `YOUR_CUSTOM_ENV_NAME`.
+Without any configuration, the environment variable which tells us the instance of the id is `pm_id`, which is automatically set by PM2.
 
 ## 🤘🏻 Usage
 
@@ -88,7 +87,7 @@ class MyController {
 **Retrieve number of slaves**
 
 ```typescript
-import { getSlavesCount  } from 'pm2-master-process';
+import { getSlavesCount } from 'pm2-master-process';
 
 const slavesCount = await getSlavesCount()
 ```
@@ -103,15 +102,15 @@ const instances = await getInstances()
 
 ### API
 
-```typescript
-declare function getCurrentInstanceId(config?: Pick<Pm2MasterProcessConfig, 'instanceIdPath'>): number | null;
-declare function getInstances({ instanceStatus }?: Pick<Pm2MasterProcessConfig, 'instanceStatus'>): Promise<ProcessDescription[]>;
-declare function getInstanceIds(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<number[]>;
 
+```typescript
 declare function getCurrentProcessId(): number | null;
 
-declare function getMasterInstanceId(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<number | null>;
-declare function isMasterInstance(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<boolean>;
+declare function getProcesses({ instanceStatus }?: Pick<Pm2MasterProcessConfig, 'instanceStatus'>): Promise<ProcessDescription[]>;
+declare function getProcessesIds(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<number[]>;
+
+declare function isMasterProcess(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<boolean>;
+declare function getMasterProcessId(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<number | null>;
 
 declare function getSlavesCount(customConfig?: Partial<Pm2MasterProcessConfig>): Promise<number>;
 ```
