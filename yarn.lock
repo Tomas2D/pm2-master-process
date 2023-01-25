@@ -2046,9 +2046,9 @@ prettier@^2.8.1:
   integrity sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==
 
 promise-based-task@^2.0.3:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/promise-based-task/-/promise-based-task-2.1.0.tgz#35d5d29c1427b483d9bcbdd7b7133fe6ceb07e82"
-  integrity sha512-fWGHvLG+hVcMHHJvvbIuw+0tXqtK84iQWr0wGOpQJSVY6V7mSmUc3aCJ6/gCaRqbDCY8T4nI5o5G4hPzWHUgUQ==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/promise-based-task/-/promise-based-task-2.2.0.tgz#ae8d161f8dd8c376e15c646737e8050774f4f85e"
+  integrity sha512-SAeCKoGbAyEvNFqdCU/CrJbgHMXjAsWb/lfirPs3gwMG+KjTcd1LRSOU7s+7cryFjUZ4KHLf/95uAan3nEFLLA==
 
 promptly@^2:
   version "2.2.0"
