@@ -51,7 +51,7 @@
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "pm2": "^5.2.2",
-    "prettier": "^2.8.1",
+    "prettier": "^3.0.0",
     "promise-based-task": "^2.0.3",
     "tsup": "^7.1.0",
     "typescript": "^5.0.4"
