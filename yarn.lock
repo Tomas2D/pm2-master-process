@@ -1798,9 +1798,9 @@ pm2-sysmonit@^1.2.8:
     tx2 "~1.0.4"
 
 pm2@^6.0.5:
-  version "6.0.8"
-  resolved "https://registry.yarnpkg.com/pm2/-/pm2-6.0.8.tgz#4b84e9a683eff46f4b9cbb164692cb3f9f4d475a"
-  integrity sha512-y7sO+UuGjfESK/ChRN+efJKAsHrBd95GY2p1GQfjVTtOfFtUfiW0NOuUhP5dN5QTF2F0EWcepgkLqbF32j90Iw==
+  version "6.0.11"
+  resolved "https://registry.yarnpkg.com/pm2/-/pm2-6.0.11.tgz#50c802c0ac5275580971c39289012b15a68b5a39"
+  integrity sha512-vD6uYdLLxs6xT6jKvLSJx3V+IhViHac8zEsvZm+0QDjR2dUyZtvem+sDLteZRnQ21tsp2oF7P03vCTDtOWD2HQ==
   dependencies:
     "@pm2/agent" "~2.1.1"
     "@pm2/io" "~6.1.0"
