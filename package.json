@@ -54,7 +54,7 @@
     "pm2": "^6.0.5",
     "prettier": "^3.0.0",
     "promise-based-task": "^3.0.2",
-    "tsup": "^8.5.1",
+    "tsup": "^9.0.0",
     "typescript": "^5.0.4"
   },
   "lint-staged": {
